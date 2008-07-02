@@ -10,9 +10,10 @@ use Carp;
 use WebService::Aladdin::Parser;
 
 use vars qw($VERSION);
-$VERSION = '0.01';
+$VERSION = '0.03';
 
-my $api_url = "http://www.aladdin.co.kr/ttb/api/search.aspx";
+my $api_url_search = "http://www.aladdin.co.kr/ttb/api/search.aspx";
+my $api_url_product = "http://www.aladdin.co.kr/ttb/api/ItemLookUp.aspx";
 
 sub new {
     my ($class, $ttbkey) = @_;
@@ -26,10 +27,27 @@ sub new {
     }, $class;
 }
 
+sub product {
+    my ($self, $id, $args) = @_;
+
+    my $uri = URI->new($api_url_product);
+
+    croak 'ItemId is required' unless $id;
+
+    $uri->query_form( TTBKey => $self->{TTBKey},
+		      ItemId => $id,
+		      ItemIdType => $args->{ItemIdType},
+		      Cover  => $args->{Cover},
+		      Partner => $args->{Partner},
+		      Output  => 'OS',
+	);
+    my $res = $self->{ua}->get($uri);
+    WebService::Aladdin::Parser->parse_product($res);
+}
 sub search {
     my ($self, $keyword, $args) = @_;
 
-    my $uri = URI->new($api_url);
+    my $uri = URI->new($api_url_search);
 
     croak 'Query is required' unless $keyword;
 
@@ -47,7 +65,7 @@ sub search {
 	);
 
     my $res = $self->{ua}->get($uri);
-    WebService::Aladdin::Parser->parse($res);
+    WebService::Aladdin::Parser->parse_search($res);
 }
 
 1;
