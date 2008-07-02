@@ -10,7 +10,7 @@ use Carp;
 use WebService::Aladdin::Parser;
 
 use vars qw($VERSION);
-$VERSION = '0.03';
+$VERSION = '0.05';
 
 my $api_url_search = "http://www.aladdin.co.kr/ttb/api/search.aspx";
 my $api_url_product = "http://www.aladdin.co.kr/ttb/api/ItemLookUp.aspx";
@@ -113,6 +113,16 @@ Returns search results.
     Partner => $Partner,  
  });
 
+=head2 product( $keyword, \%options )
+
+Returns product information.
+
+  my $data = $p->product($ISBN, {
+    ItemIdType => $args->{ItemIdType}, #(?:ISBN|ItemId)
+    Cover  => $args->{Cover},  # (?:Mid|Small|Big|Mini|None)
+    Partner => $args->{Partner},
+});
+
 =head1 AUTHOR
 
 JEEN E<lt>jeen@perk_dot_krE<gt>
@@ -123,5 +133,6 @@ it under the same terms as Perl itself.
 =head1 SEE ALSO
 
 http://www.aladdin.co.kr/ttb/wguide.aspx?pn=apiguide
+http://blog.aladdin.co.kr/ttb/category/16526941?communitytype=MyPaper
 
 =cut
