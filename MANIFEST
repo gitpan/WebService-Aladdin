@@ -1,5 +1,11 @@
 Changes
 lib/WebService/Aladdin.pm
+lib/WebService/Aladdin/Parser.pm
+lib/WebService/Aladdin/Item.pm
+lib/WebService/Aladdin/Items.pm
+lib/WebService/Aladdin/Item/Book.pm
+lib/WebService/Aladdin/Item/Music.pm
+lib/WebService/Aladdin/Item/DVD.pm
 Makefile.PL
 MANIFEST			This list of files
 t/00_compile.t
