@@ -8,7 +8,7 @@ my $aladdin = WebService::Aladdin->new();
 ok $aladdin;
 
 my $data = $aladdin->search('Perl');
-ok $data;
+isa_ok ref $data, 'WebService::Aladdin::Items';
 isa_ok $data->items, 'ARRAY';
 isa_ok $data->items->[0], 'HASH';
 

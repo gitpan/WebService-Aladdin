@@ -10,7 +10,7 @@ use Carp;
 use WebService::Aladdin::Parser;
 
 use vars qw($VERSION);
-$VERSION = '0.06';
+$VERSION = '0.0701';
 
 my $api_url_search = "http://www.aladdin.co.kr/ttb/api/search.aspx";
 my $api_url_product = "http://www.aladdin.co.kr/ttb/api/ItemLookUp.aspx";
@@ -64,12 +64,14 @@ sub search {
                       Partner => $args->{Partner},
 	);
 
-    my $res = $self->{ua}->get($uri);
+    my $res = $self->{ua}->get($uri); 
     WebService::Aladdin::Parser->parse_search($res);
 }
 
 1;
 __END__
+
+=encoding utf8
 
 =head1 NAME
 
@@ -79,11 +81,12 @@ WebService::Aladdin - Aladdin WebService API Module
 
   use WebService::Aladdin;
 
-  my $p = WebService::Aladdin->new( TTBKey => 'TTBKey' );
+  my $p = WebService::Aladdin->new( TTBKey => 'Your TTBKey' );
   my $data = $p->search('Perl');
   for my $item (@{ $data }) {
-      $data->title;
+      print $item->title, "\n";
   }
+
 =head1 DESCRIPTION
 
 WebService::Aladdin is Aladdin WebService API Module.
@@ -92,7 +95,7 @@ They mainly sell books and Gift and DVD and etc.
 
 =head1 FUNCTIONS
 
-=head2 new( TTBKey => 'TTBKey' )
+=head2 new( TTBKey => 'Your TTBKey' )
 
 Returns an instance of this module. If you don't enter TTBKey parameter, It's ok. 
 Because default TTBKey is mine. :-)
