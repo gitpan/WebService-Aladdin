@@ -7,5 +7,5 @@ use WebService::Aladdin;
 my $aladdin = WebService::Aladdin->new();
 ok $aladdin;
 
-my $data = $aladdin->product('9238043167');
+my $data = $aladdin->product('895461180X');
 ok $data;

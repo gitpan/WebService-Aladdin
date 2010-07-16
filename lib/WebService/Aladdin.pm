@@ -10,7 +10,7 @@ use Carp;
 use WebService::Aladdin::Parser;
 
 use vars qw($VERSION);
-$VERSION = '0.0701';
+$VERSION = '0.0703';
 
 my $api_url_search = "http://www.aladdin.co.kr/ttb/api/search.aspx";
 my $api_url_product = "http://www.aladdin.co.kr/ttb/api/ItemLookUp.aspx";
@@ -36,9 +36,6 @@ sub product {
 
     $uri->query_form( TTBKey => $self->{TTBKey},
 		      ItemId => $id,
-		      ItemIdType => $args->{ItemIdType},
-		      Cover  => $args->{Cover},
-		      Partner => $args->{Partner},
 		      Output  => 'OS',
 	);
     my $res = $self->{ua}->get($uri);

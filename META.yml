@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               WebService-Aladdin
-version:            0.0701
+version:            0.0703
 abstract:           ~
 author:
     - JEEN <jeen@perl.kr>
