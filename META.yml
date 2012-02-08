@@ -1,13 +1,14 @@
 ---
-abstract: unknown
+abstract: 'Aladdin WebService API Module'
 author:
-  - 'JEEN <jeen@perl.kr>'
+  - 'JEEN <jeen@perk_dot_kr>'
 build_requires:
-  ExtUtils::MakeMaker: 0
+  ExtUtils::MakeMaker: 6.36
 configure_requires:
-  ExtUtils::MakeMaker: 0
+  ExtUtils::MakeMaker: 6.36
+distribution_type: module
 dynamic_config: 1
-generated_by: 'ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.112621'
+generated_by: 'Module::Install version 1.04'
 license: unknown
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -15,8 +16,8 @@ meta-spec:
 name: WebService-Aladdin
 no_index:
   directory:
-    - t
     - inc
+    - t
 requires:
   Carp: 0
   Class::Accessor::Fast: 0
@@ -25,4 +26,6 @@ requires:
   URI: 0
   XML::FeedPP: 0
   version: 0
-version: 0.0705
+resources:
+  repository: git://github.com/JEEN/p5-WebService-Aladdin.git
+version: 0.0706

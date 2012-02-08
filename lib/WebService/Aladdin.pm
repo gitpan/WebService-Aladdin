@@ -2,15 +2,13 @@ package WebService::Aladdin;
 
 use strict;
 use warnings;
-
 use LWP::UserAgent;
 use URI;
 use Carp;
-
 use WebService::Aladdin::Parser;
 
 use vars qw($VERSION);
-$VERSION = '0.0705';
+$VERSION = '0.0706';
 
 my $api_url_search = "http://www.aladdin.co.kr/ttb/api/search.aspx";
 my $api_url_product = "http://www.aladdin.co.kr/ttb/api/ItemLookUp.aspx";
@@ -35,9 +33,9 @@ sub product {
     croak 'ItemId is required' unless $id;
 
     $uri->query_form( TTBKey => $self->{TTBKey},
-		      ItemId => $id,
-		      Output  => 'OS',
-	);
+              ItemId => $id,
+              Output  => 'OS',
+    );
     my $res = $self->{ua}->get($uri);
     WebService::Aladdin::Parser->parse_product($res);
 }
@@ -60,7 +58,7 @@ sub search {
                       TitleCut => $args->{TitleCut},
                       CategoryId => $args->{CategoryId},
                       Partner => $args->{Partner},
-	);
+    );
 
     my $res = $self->{ua}->get($uri); 
     WebService::Aladdin::Parser->parse_search($res);
